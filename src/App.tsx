@@ -25,9 +25,9 @@ import {
 } from 'lucide-react';
 
 const heroSlides = [
-  { src: 'https://images.pexels.com/photos/1267269/pexels-photo-1267269.jpeg?auto=compress&cs=tinysrgb&w=1600', alt: 'Abarie.com - Nigeria\'s Rib-Cracker' },
-  { src: 'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1600', alt: 'Abarie.com - So Far So Good' },
-  { src: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=1600', alt: 'Abarie.com Live on Stage' },
+  { src: '/images/hero-1.webp', alt: 'Abarie.com - Nigeria\'s Rib-Cracker' },
+  { src: '/images/hero-2.webp', alt: 'Abarie.com - So Far So Good' },
+  { src: '/images/hero-3.webp', alt: 'Abarie.com Live on Stage' },
 ];
 
 const stats = [
@@ -65,19 +65,19 @@ const upcomingEvents = [
     title: 'So Far So Good 3.0',
     date: 'Coming Soon',
     venue: 'Lagos, Nigeria',
-    image: 'https://images.pexels.com/photos/1540406/pexels-photo-1540406.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/event-1.webp',
   },
   {
     title: 'Corporate Comedy Night',
     date: 'Monthly',
     venue: 'Lagos',
-    image: 'https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/event-2.webp',
   },
   {
     title: 'Campus Tour',
     date: 'TBA',
     venue: 'Nationwide',
-    image: 'https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/event-3.webp',
   },
 ];
 
@@ -85,37 +85,37 @@ const portfolioItems = [
   {
     title: 'So Far So Good 2.0 Highlights',
     category: 'Show',
-    image: 'https://images.pexels.com/photos/3321793/pexels-photo-3321793.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/portfolio-1.webp',
     link: 'https://youtube.com/@abariedotcom',
   },
   {
     title: 'Mudiaga Comedy Show',
     category: 'Performance',
-    image: 'https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/portfolio-2.webp',
     link: 'https://youtube.com/@abariedotcom',
   },
   {
     title: 'So Far So Good 1.0',
     category: 'Show',
-    image: 'https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/portfolio-3.webp',
     link: 'https://youtube.com/@abariedotcom',
   },
   {
     title: 'Live on Stage',
     category: 'Performance',
-    image: 'https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/portfolio-4.webp',
     link: 'https://youtube.com/@abariedotcom',
   },
   {
     title: 'Behind The Scenes',
     category: 'Exclusive',
-    image: 'https://images.pexels.com/photos/3893715/pexels-photo-3893715.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/portfolio-5.webp',
     link: 'https://youtube.com/@abariedotcom',
   },
   {
     title: 'Abarie in Action',
     category: 'Live',
-    image: 'https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: '/images/portfolio-6.webp',
     link: 'https://youtube.com/@abariedotcom',
   },
 ];
@@ -167,7 +167,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-950 text-white font-sans">
+    <div className="min-h-screen bg-dark-950 text-white font-sans overflow-y-auto">
       {/* Navigation */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -335,7 +335,7 @@ function App() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden">
                 <img
-                  src="https://images.pexels.com/photos/3021120/pexels-photo-3021120.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="/images/about-portrait.webp"
                   alt="Abarie - Nigeria's Rib-Cracker"
                   className="w-full h-full object-cover"
                 />
@@ -607,7 +607,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-dark-950 pt-20 pb-8">
+      <footer id="contact" className="bg-dark-950 pt-20 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             {/* Brand */}

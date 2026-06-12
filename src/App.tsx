@@ -1,20 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { HomePage } from './pages/HomePage';
-import { EventsPage } from './pages/EventsPage';
+import Home from './pages/Home';
+import About from './pages/About';
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-900">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/events" element={<EventsPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </BrowserRouter>
   );
 }
-
-export default App;

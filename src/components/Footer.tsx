@@ -81,7 +81,7 @@ export default function Footer() {
         <div className="border-t border-dark-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-dark-500 text-center md:text-left">
-              &copy; 2025 Abarie.com Entertainment. All rights reserved.
+              © 2025 Abarie.com Entertainment. All rights reserved.
             </p>
             <p className="text-dark-500 text-sm">
               Built with heart for Nigeria's Rib-Cracker

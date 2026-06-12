@@ -47,9 +47,16 @@ export default function Nav() {
             >
               About
             </Link>
-            <a href={sectionHref('#events')} className="text-dark-200 hover:text-primary-400 transition-colors font-medium">
+            <Link
+              to="/events"
+              className={`font-medium transition-colors ${
+                location.pathname === '/events'
+                  ? 'text-primary-400'
+                  : 'text-dark-200 hover:text-primary-400'
+              }`}
+            >
               Events
-            </a>
+            </Link>
             <a href={sectionHref('#services')} className="text-dark-200 hover:text-primary-400 transition-colors font-medium">
               Services
             </a>
@@ -82,12 +89,16 @@ export default function Nav() {
             <Link to="/" className="block py-2 text-dark-200 hover:text-primary-400 transition-colors font-medium">
               Home
             </Link>
-            <Link to="/about" className="block py-2 text-primary-400 font-medium">
+            <Link to="/about" className={`block py-2 font-medium transition-colors ${
+              location.pathname === '/about' ? 'text-primary-400' : 'text-dark-200 hover:text-primary-400'
+            }`}>
               About
             </Link>
-            <a href={sectionHref('#events')} className="block py-2 text-dark-200 hover:text-primary-400 transition-colors font-medium">
+            <Link to="/events" className={`block py-2 font-medium transition-colors ${
+              location.pathname === '/events' ? 'text-primary-400' : 'text-dark-200 hover:text-primary-400'
+            }`}>
               Events
-            </a>
+            </Link>
             <a href={sectionHref('#services')} className="block py-2 text-dark-200 hover:text-primary-400 transition-colors font-medium">
               Services
             </a>

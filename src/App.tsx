@@ -264,7 +264,7 @@ function App() {
             <img
               src={slide.src}
               alt={slide.alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-dark-950/70 via-dark-950/50 to-dark-950" />
           </div>
@@ -337,7 +337,7 @@ function App() {
                 <img
                   src="/images/about-portrait.webp"
                   alt="Abarie - Nigeria's Rib-Cracker"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-primary-500 to-primary-600 p-6 rounded-2xl shadow-2xl">
@@ -423,7 +423,7 @@ function App() {
                   <img
                     src={event.image}
                     alt={event.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
                 <div className="p-6">
@@ -512,7 +512,7 @@ function App() {
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-dark-950/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-primary-500 flex items-center justify-center">

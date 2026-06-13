@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail, Ticket } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -19,7 +19,7 @@ export default function Footer() {
                 { href: 'https://facebook.com/abariedotcom', Icon: Facebook },
                 { href: 'https://instagram.com/abariedotcom', Icon: Instagram },
                 { href: 'https://twitter.com/abariedotcom', Icon: Twitter },
-                { href: 'https://youtube.com/@abariedotcom', Icon: Youtube },
+                { href: 'https://www.youtube.com/@Abarie.comcomedy', Icon: Youtube },
               ].map(({ href, Icon }) => (
                 <a
                   key={href}
@@ -46,8 +46,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display text-xl font-bold mb-6">Services</h4>
+            <h4 className="font-display text-xl font-bold mb-6">Get Tickets</h4>
             <ul className="space-y-3">
+              <li><Link to="/tickets" className="text-dark-400 hover:text-primary-400 transition-colors flex items-center gap-2"><Ticket size={16} /> Buy Event Tickets</Link></li>
               <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Stand-Up Comedy</a></li>
               <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Event Compere</a></li>
               <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Corporate Shows</a></li>

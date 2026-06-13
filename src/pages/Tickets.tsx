@@ -1,24 +1,20 @@
-import { Calendar, MapPin, Clock, Ticket, Star, Users, Phone, Mail, ArrowRight, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, Clock, Ticket, Star, Phone, Mail, ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
-// Featured upcoming events (add new events here when available)
+const forthcomingEvent = {
+  id: 'sfsg3',
+  title: "So Far So Good 3.0",
+  date: "Coming Soon",
+  time: "TBA",
+  venue: "Eko Convention Centre",
+  location: "Lagos, Nigeria",
+  description: "The highly anticipated third edition of Abarie's flagship comedy show. Bigger, bolder, and guaranteed to crack your ribs. An unforgettable night of non-stop laughter awaits!",
+  image: "/images/event-1.webp",
+};
+
 const upcomingEvents = [
-  {
-    id: 1,
-    title: "So Far So Good 3.0",
-    date: "Coming Soon",
-    time: "TBA",
-    venue: "Eko Convention Centre",
-    location: "Lagos, Nigeria",
-    price: "Tickets Available Soon",
-    image: "/images/event-1.webp",
-    description: "The highly anticipated third edition of Abarie's flagship comedy show. Bigger, bolder, and guaranteed to crack your ribs.",
-    featured: true,
-    available: false,
-    ticketUrl: "",
-  },
   {
     id: 2,
     title: "Corporate Comedy Night",
@@ -35,7 +31,6 @@ const upcomingEvents = [
   },
 ];
 
-// Past events used as placeholders when no future events available
 const pastEvents = [
   {
     id: 3,
@@ -47,7 +42,6 @@ const pastEvents = [
     price: "Sold Out",
     image: "/images/portfolio-1.webp",
     description: "The second edition of Abarie's flagship show. A night of non-stop laughter that had Lagos talking for weeks.",
-    isPast: true,
     youtubeUrl: "https://www.youtube.com/watch?v=gqENYWBeIXA",
   },
   {
@@ -60,7 +54,6 @@ const pastEvents = [
     price: "Completed",
     image: "/images/portfolio-2.webp",
     description: "Abarie delivered a show-stopping performance at the Mudiaga Comedy Show.",
-    isPast: true,
     youtubeUrl: "https://www.youtube.com/watch?v=dPP57_KVzzs",
   },
   {
@@ -73,12 +66,9 @@ const pastEvents = [
     price: "Sold Out",
     image: "/images/portfolio-3.webp",
     description: "The debut edition of the So Far So Good franchise. The show that started it all.",
-    isPast: true,
     youtubeUrl: "https://www.youtube.com/watch?v=7-2g37FDszo",
   },
 ];
-
-const hasUpcomingEvents = upcomingEvents.some(e => e.available);
 
 export default function Tickets() {
   return (
@@ -108,12 +98,72 @@ export default function Tickets() {
         </div>
       </section>
 
-      {/* Upcoming Events with Tickets */}
+      {/* Forthcoming Event - Featured CTA */}
       <section className="py-16 px-4 bg-dark-900">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-10">
+            <Sparkles className="w-5 h-5 text-accent-500" />
+            <h2 className="font-display text-3xl font-bold">Forthcoming Show</h2>
+          </div>
+
+          <div className="group relative bg-dark-800/50 rounded-2xl overflow-hidden border border-primary-500/30 hover:border-primary-500/60 transition-all duration-300">
+            <div className="lg:flex">
+              <div className="lg:w-1/2 aspect-video lg:aspect-auto overflow-hidden">
+                <img
+                  src={forthcomingEvent.image}
+                  alt={forthcomingEvent.title}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
+                  <span className="px-3 py-1 bg-accent-500 text-dark-950 text-sm font-bold rounded-full animate-pulse">
+                    Coming Soon
+                  </span>
+                </div>
+              </div>
+
+              <div className="lg:w-1/2 p-6 lg:p-8 flex flex-col">
+                <h3 className="font-display text-2xl lg:text-3xl font-bold mb-4 group-hover:text-primary-400 transition-colors">
+                  {forthcomingEvent.title}
+                </h3>
+
+                <p className="text-dark-400 text-sm lg:text-base mb-6 flex-1">
+                  {forthcomingEvent.description}
+                </p>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center gap-3 text-dark-300">
+                    <Calendar className="w-5 h-5 text-primary-400" />
+                    <span>{forthcomingEvent.date}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-dark-300">
+                    <Clock className="w-5 h-5 text-primary-400" />
+                    <span>{forthcomingEvent.time}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-dark-300">
+                    <MapPin className="w-5 h-5 text-primary-400" />
+                    <span>{forthcomingEvent.venue}, {forthcomingEvent.location}</span>
+                  </div>
+                </div>
+
+                <Link
+                  to={`/book/${forthcomingEvent.id}`}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-dark-950 font-bold text-lg rounded-xl transition-all shadow-lg hover:shadow-primary-500/25 hover:scale-105"
+                >
+                  <Ticket className="w-5 h-5" />
+                  Get Your Tickets
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Other Upcoming Events */}
+      <section className="py-16 px-4 bg-dark-950">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center gap-2 mb-10">
             <Ticket className="w-5 h-5 text-primary-400" />
-            <h2 className="font-display text-3xl font-bold">Upcoming Shows</h2>
+            <h2 className="font-display text-3xl font-bold">More Shows</h2>
           </div>
 
           {upcomingEvents.length > 0 ? (
@@ -164,25 +214,13 @@ export default function Tickets() {
 
                       <div className="flex items-center justify-between mt-auto">
                         <span className="text-primary-400 font-semibold">{event.price}</span>
-                        {event.available && event.ticketUrl ? (
-                          <a
-                            href={event.ticketUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-5 py-2 bg-primary-500 hover:bg-primary-600 text-dark-950 font-semibold rounded-lg transition-colors flex items-center gap-2"
-                          >
-                            <Ticket className="w-4 h-4" />
-                            Buy Tickets
-                          </a>
-                        ) : (
-                          <button
-                            disabled
-                            className="px-5 py-2 bg-dark-700 text-dark-400 font-semibold rounded-lg cursor-not-allowed flex items-center gap-2"
-                          >
-                            <Ticket className="w-4 h-4" />
-                            Coming Soon
-                          </button>
-                        )}
+                        <button
+                          disabled
+                          className="px-5 py-2 bg-dark-700 text-dark-400 font-semibold rounded-lg cursor-not-allowed flex items-center gap-2"
+                        >
+                          <Ticket className="w-4 h-4" />
+                          Coming Soon
+                        </button>
                       </div>
                     </div>
                   </div>

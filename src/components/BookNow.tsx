@@ -61,7 +61,7 @@ const testimonials = [
   {
     name: 'Adaeze Nwosu',
     event: 'Private Event',
-    text: 'From hawkers on Lagos streets to headlining shows - Abarie\'s journey inspires as much as his comedy entertains.',
+    text: "From hawkers on Lagos streets to headlining shows - Abarie's journey inspires as much as his comedy entertains.",
     rating: 5
   }
 ];
@@ -462,7 +462,6 @@ export default function BookNow() {
                 <a
                   href="mailto:contact@abarie.com"
                   className="flex items-center gap-3 text-dark-200 hover:text-primary-300 transition-colors"
-"
                 >
                   <Mail className="w-5 h-5" />
                   <span>contact@abarie.com</span>

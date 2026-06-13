@@ -366,8 +366,8 @@ export default function BookNow() {
             {/* Photo */}
             <div className="relative rounded-2xl overflow-hidden h-64 lg:h-80">
               <img
-                src="https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                alt="Live performance event"
+                src="/images/abarie-native.webp"
+                alt="Abarie performing live"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-transparent to-transparent" />

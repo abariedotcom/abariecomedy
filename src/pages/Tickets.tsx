@@ -1,41 +1,10 @@
-import { Calendar, MapPin, Clock, Ticket, Star, Users, Phone, Mail, ArrowRight, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, Clock, Ticket, Star, Phone, Mail, ArrowRight, ExternalLink, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import { getActiveEvents, type Event } from '../lib/supabase';
 
-// Featured upcoming events (add new events here when available)
-const upcomingEvents = [
-  {
-    id: 1,
-    title: "So Far So Good 3.0",
-    date: "Coming Soon",
-    time: "TBA",
-    venue: "Eko Convention Centre",
-    location: "Lagos, Nigeria",
-    price: "Tickets Available Soon",
-    image: "/images/event-1.webp",
-    description: "The highly anticipated third edition of Abarie's flagship comedy show. Bigger, bolder, and guaranteed to crack your ribs.",
-    featured: true,
-    available: false,
-    ticketUrl: "",
-  },
-  {
-    id: 2,
-    title: "Corporate Comedy Night",
-    date: "Monthly",
-    time: "7:00 PM",
-    venue: "Various Venues",
-    location: "Lagos",
-    price: "Invite Only",
-    image: "/images/event-2.webp",
-    description: "Exclusive comedy experiences tailored for corporate audiences. Clean humor, premium networking, and unforgettable entertainment.",
-    featured: true,
-    available: false,
-    ticketUrl: "",
-  },
-];
-
-// Past events used as placeholders when no future events available
 const pastEvents = [
   {
     id: 3,
@@ -47,7 +16,6 @@ const pastEvents = [
     price: "Sold Out",
     image: "/images/portfolio-1.webp",
     description: "The second edition of Abarie's flagship show. A night of non-stop laughter that had Lagos talking for weeks.",
-    isPast: true,
     youtubeUrl: "https://www.youtube.com/watch?v=gqENYWBeIXA",
   },
   {
@@ -60,7 +28,6 @@ const pastEvents = [
     price: "Completed",
     image: "/images/portfolio-2.webp",
     description: "Abarie delivered a show-stopping performance at the Mudiaga Comedy Show.",
-    isPast: true,
     youtubeUrl: "https://www.youtube.com/watch?v=dPP57_KVzzs",
   },
   {
@@ -73,19 +40,45 @@ const pastEvents = [
     price: "Sold Out",
     image: "/images/portfolio-3.webp",
     description: "The debut edition of the So Far So Good franchise. The show that started it all.",
-    isPast: true,
     youtubeUrl: "https://www.youtube.com/watch?v=7-2g37FDszo",
   },
 ];
 
-const hasUpcomingEvents = upcomingEvents.some(e => e.available);
+function formatPrice(price: number): string {
+  return new Intl.NumberFormat('en-NG', {
+    style: 'currency',
+    currency: 'NGN',
+    minimumFractionDigits: 0,
+  }).format(price);
+}
+
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-NG', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
 
 export default function Tickets() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchEvents() {
+      const activeEvents = await getActiveEvents();
+      setEvents(activeEvents);
+      setLoading(false);
+    }
+    fetchEvents();
+  }, []);
+
   return (
     <div className="min-h-screen bg-dark-950 text-white font-sans">
       <Nav />
 
-      {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary-900/20 to-transparent" />
         <div className="absolute inset-0 opacity-10">
@@ -108,7 +101,6 @@ export default function Tickets() {
         </div>
       </section>
 
-      {/* Upcoming Events with Tickets */}
       <section className="py-16 px-4 bg-dark-900">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-10">
@@ -116,9 +108,13 @@ export default function Tickets() {
             <h2 className="font-display text-3xl font-bold">Upcoming Shows</h2>
           </div>
 
-          {upcomingEvents.length > 0 ? (
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 text-primary-400 animate-spin" />
+            </div>
+          ) : events.length > 0 ? (
             <div className="grid lg:grid-cols-2 gap-8">
-              {upcomingEvents.map((event) => (
+              {events.map((event) => (
                 <div
                   key={event.id}
                   className="group relative bg-dark-800/50 rounded-2xl overflow-hidden border border-dark-700 hover:border-primary-500/50 transition-all duration-300"
@@ -126,20 +122,18 @@ export default function Tickets() {
                   <div className="lg:flex">
                     <div className="lg:w-1/2 aspect-video lg:aspect-auto overflow-hidden">
                       <img
-                        src={event.image}
+                        src={event.image_url || '/images/event-1.webp'}
                         alt={event.title}
                         className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
 
                     <div className="lg:w-1/2 p-6 flex flex-col">
-                      {event.featured && (
-                        <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
-                          <span className="px-3 py-1 bg-accent-500 text-dark-950 text-sm font-bold rounded-full">
-                            Featured
-                          </span>
-                        </div>
-                      )}
+                      <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
+                        <span className="px-3 py-1 bg-accent-500 text-dark-950 text-sm font-bold rounded-full">
+                          Featured
+                        </span>
+                      </div>
 
                       <h3 className="font-display text-2xl font-bold mb-3 mt-6 lg:mt-0 group-hover:text-primary-400 transition-colors">
                         {event.title}
@@ -150,7 +144,7 @@ export default function Tickets() {
                       <div className="space-y-2 mb-4">
                         <div className="flex items-center gap-2 text-dark-300 text-sm">
                           <Calendar className="w-4 h-4 text-primary-400" />
-                          <span>{event.date}</span>
+                          <span>{formatDate(event.date)}</span>
                         </div>
                         <div className="flex items-center gap-2 text-dark-300 text-sm">
                           <Clock className="w-4 h-4 text-primary-400" />
@@ -163,26 +157,17 @@ export default function Tickets() {
                       </div>
 
                       <div className="flex items-center justify-between mt-auto">
-                        <span className="text-primary-400 font-semibold">{event.price}</span>
-                        {event.available && event.ticketUrl ? (
-                          <a
-                            href={event.ticketUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-5 py-2 bg-primary-500 hover:bg-primary-600 text-dark-950 font-semibold rounded-lg transition-colors flex items-center gap-2"
-                          >
-                            <Ticket className="w-4 h-4" />
-                            Buy Tickets
-                          </a>
-                        ) : (
-                          <button
-                            disabled
-                            className="px-5 py-2 bg-dark-700 text-dark-400 font-semibold rounded-lg cursor-not-allowed flex items-center gap-2"
-                          >
-                            <Ticket className="w-4 h-4" />
-                            Coming Soon
-                          </button>
-                        )}
+                        <div className="text-sm">
+                          <span className="text-dark-400">From </span>
+                          <span className="text-primary-400 font-bold text-lg">{formatPrice(event.price_regular)}</span>
+                        </div>
+                        <Link
+                          to={`/book/${event.id}`}
+                          className="px-5 py-2 bg-primary-500 hover:bg-primary-600 text-dark-950 font-semibold rounded-lg transition-colors flex items-center gap-2"
+                        >
+                          <Ticket className="w-4 h-4" />
+                          Get Tickets
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -199,7 +184,6 @@ export default function Tickets() {
         </div>
       </section>
 
-      {/* Past Events Gallery */}
       <section className="py-16 px-4 bg-dark-950">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-2 mb-4">
@@ -263,7 +247,6 @@ export default function Tickets() {
         </div>
       </section>
 
-      {/* Notification Signup */}
       <section className="py-16 px-4 bg-dark-900">
         <div className="max-w-3xl mx-auto text-center">
           <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
@@ -290,7 +273,6 @@ export default function Tickets() {
         </div>
       </section>
 
-      {/* Book for Your Event */}
       <section className="py-20 px-4 bg-dark-950">
         <div className="max-w-5xl mx-auto">
           <div className="bg-gradient-to-r from-primary-600/20 to-accent-500/20 rounded-2xl p-8 md:p-12 border border-primary-500/30">
@@ -330,7 +312,6 @@ export default function Tickets() {
         </div>
       </section>
 
-      {/* Back to Home */}
       <section className="py-8 px-4 bg-dark-900 border-t border-dark-800">
         <div className="max-w-7xl mx-auto text-center">
           <Link

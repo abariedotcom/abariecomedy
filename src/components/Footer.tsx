@@ -73,7 +73,7 @@ export default function Footer() {
               <li><Link to="/events" className="text-dark-400 hover:text-primary-400 transition-colors">Events</Link></li>
               <li><Link to="/portfolio" className="text-dark-400 hover:text-primary-400 transition-colors">Portfolio</Link></li>
               <li><Link to="/contact" className="text-dark-400 hover:text-primary-400 transition-colors">Contact</Link></li>
-              <li><a href="/\#book" className="text-dark-400 hover:text-primary-400 transition-colors">Book Now</a></li>
+              <li><a href="/#book" className="text-dark-400 hover:text-primary-400 transition-colors">Book Now</a></li>
             </ul>
           </div>
 
@@ -81,10 +81,10 @@ export default function Footer() {
             <h4 className="font-display text-xl font-bold mb-6">Get Tickets</h4>
             <ul className="space-y-3">
               <li><Link to="/tickets" className="text-dark-400 hover:text-primary-400 transition-colors flex items-center gap-2"><Ticket size={16} /> Buy Event Tickets</Link></li>
-              <li><a href="/\#services" className="text-dark-400 hover:text-primary-400 transition-colors">Stand-Up Comedy</a></li>
-              <li><a href="/\#services" className="text-dark-400 hover:text-primary-400 transition-colors">Event Compere</a></li>
-              <li><a href="/\#services" className="text-dark-400 hover:text-primary-400 transition-colors">Corporate Shows</a></li>
-              <li><a href="/\#services" className="text-dark-400 hover:text-primary-400 transition-colors">Private Events</a></li>
+              <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Stand-Up Comedy</a></li>
+              <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Event Compere</a></li>
+              <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Corporate Shows</a></li>
+              <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Private Events</a></li>
             </ul>
           </div>
 
@@ -124,3 +124,4 @@ export default function Footer() {
       </div>
     </footer>
   );
+}

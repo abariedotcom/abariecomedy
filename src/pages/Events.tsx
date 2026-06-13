@@ -186,3 +186,4 @@ export default function Events() {
       <Footer />
     </div>
   );
+}

@@ -57,9 +57,16 @@ export default function Nav() {
             >
               Events
             </Link>
-            <a href={sectionHref('#services')} className="text-dark-200 hover:text-primary-400 transition-colors font-medium">
-              Services
-            </a>
+            <Link
+              to="/tickets"
+              className={`font-medium transition-colors flex items-center gap-1.5 ${
+                location.pathname === '/tickets'
+                  ? 'text-accent-400'
+                  : 'text-dark-200 hover:text-accent-400'
+              }`}
+            >
+              <Ticket size={16} /> Get Your Tickets
+            </Link>
             <Link
               to="/portfolio"
               className={`font-medium transition-colors ${
@@ -73,12 +80,12 @@ export default function Nav() {
             <a href={sectionHref('#contact')} className="text-dark-200 hover:text-primary-400 transition-colors font-medium">
               Contact
             </a>
-            <Link
-              to="/tickets"
-              className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-accent-500/25 flex items-center gap-2"
+            <a
+              href={sectionHref('#book')}
+              className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-primary-500/25"
             >
-              <Ticket size={18} /> Get Tickets
-            </Link>
+              Book Now
+            </a>
           </div>
 
           <button
@@ -106,9 +113,11 @@ export default function Nav() {
             }`}>
               Events
             </Link>
-            <a href={sectionHref('#services')} className="block py-2 text-dark-200 hover:text-primary-400 transition-colors font-medium">
-              Services
-            </a>
+            <Link to="/tickets" className={`block py-2 font-medium transition-colors flex items-center gap-1.5 ${
+              location.pathname === '/tickets' ? 'text-accent-400' : 'text-dark-200 hover:text-accent-400'
+            }`}>
+              <Ticket size={16} /> Get Your Tickets
+            </Link>
             <Link to="/portfolio" className={`block py-2 font-medium transition-colors ${
               location.pathname === '/portfolio' ? 'text-primary-400' : 'text-dark-200 hover:text-primary-400'
             }`}>
@@ -117,12 +126,12 @@ export default function Nav() {
             <a href={sectionHref('#contact')} className="block py-2 text-dark-200 hover:text-primary-400 transition-colors font-medium">
               Contact
             </a>
-            <Link
-              to="/tickets"
-              className="block bg-gradient-to-r from-accent-500 to-accent-600 text-white text-center px-6 py-3 rounded-full font-semibold flex items-center justify-center gap-2"
+            <a
+              href={sectionHref('#book')}
+              className="block bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center px-6 py-3 rounded-full font-semibold"
             >
-              <Ticket size={18} /> Get Tickets
-            </Link>
+              Book Now
+            </a>
           </div>
         </div>
       )}

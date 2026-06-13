@@ -1,5 +1,17 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, TikTok, Youtube, MapPin, Phone, Mail, Ticket } from 'lucide-react';
+import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, Ticket } from 'lucide-react';
+
+const TikTokIcon = ({ size = 24 }: { size?: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.52 1.18 2.89 2.89 0 0 1 2.31-4.26V9.23a6.32 6.32 0 0 0-5.61 6.47 6.32 6.32 0 0 0 6.32 6.32 6.32 6.32 0 0 0 6.32-6.32V9.12a8.61 8.61 0 0 0 4.76 1.43V7.17a4.83 4.83 0 0 1-1.36-.48z" />
+  </svg>
+);
 
 export default function Footer() {
   return (
@@ -15,22 +27,38 @@ export default function Footer() {
               Nigeria's most electrifying stand-up comedian and compere. Based in Lagos, performing everywhere.
             </p>
             <div className="flex gap-4">
-              {[
-                { href: 'https://facebook.com/Abariedotcomcomedy/', Icon: Facebook },
-                { href: 'https://instagram.com/abarie.com_', Icon: Instagram },
-                { href: 'https://www.tiktok.com/@abarie.com', Icon: TikTok },
-                { href: 'https://www.youtube.com/@Abarie.comcomedy', Icon: Youtube },
-              ].map(({ href, Icon }) => (
-                <a
-                  key={href}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-dark-800 hover:bg-primary-500 flex items-center justify-center transition-colors"
-                >
-                  <Icon size={20} />
-                </a>
-              ))}
+              <a
+                href="https://facebook.com/Abariedotcomcomedy/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-dark-800 hover:bg-primary-500 flex items-center justify-center transition-colors"
+              >
+                <Facebook size={20} />
+              </a>
+              <a
+                href="https://instagram.com/abarie.com_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-dark-800 hover:bg-primary-500 flex items-center justify-center transition-colors"
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href="https://www.tiktok.com/@abarie.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-dark-800 hover:bg-primary-500 flex items-center justify-center transition-colors"
+              >
+                <TikTokIcon size={20} />
+              </a>
+              <a
+                href="https://www.youtube.com/@Abarie.comcomedy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-dark-800 hover:bg-primary-500 flex items-center justify-center transition-colors"
+              >
+                <Youtube size={20} />
+              </a>
             </div>
           </div>
 

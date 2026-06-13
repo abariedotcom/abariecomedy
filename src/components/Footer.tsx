@@ -19,9 +19,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
-            <Link to="/" className="flex items-center space-x-1 mb-6">
-              <span className="font-display text-3xl font-bold text-primary-400">Abarie</span>
-              <span className="text-accent-500 text-3xl font-bold">.com</span>
+            <Link to="/" className="flex items-center mb-6">
+              <img
+                src="/images/logo.webp"
+                alt="Abarie.com Comedy"
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="text-dark-400 mb-6">
               Nigeria's most electrifying stand-up comedian and compere. Based in Lagos, performing everywhere.

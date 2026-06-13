@@ -4,11 +4,10 @@ import {
   MapPin, ChevronLeft, ChevronRight, Play,
   Calendar, Star, Users, Award, Mic,
   Drama, UserCheck, Sparkles, ExternalLink, ArrowRight,
-  Ticket,
+  Phone, Mail, Ticket,
 } from 'lucide-react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import BookNow from '../components/BookNow';
 
 const heroSlides = [
   { src: '/images/hero-1.webp', alt: "Abarie.com - Nigeria's Rib-Cracker" },
@@ -119,7 +118,7 @@ export default function Home() {
             </h1>
             <p className="text-xl sm:text-2xl text-dark-200 mb-8 max-w-3xl mx-auto animate-slide-up">
               From hawking vegetables on the streets of Lagos to headlining sold-out shows &mdash;
-              Nigeric's most electrifying stand-up comedian and compere.
+              Nigeria's most electrifying stand-up comedian and compere.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up">
               <a
@@ -181,7 +180,7 @@ export default function Home() {
               </h2>
               <div className="space-y-4 text-dark-300 text-lg">
                 <p>
-                  Born in Lagos and raised with deep Nnewi, Anamb State roots, Ifenyichukwu Daniel Okeke &mdash;
+                  Born in Lagos and raised with deep Nnewi, Anambra State roots, Ifeanyichukwu Daniel Okeke &mdash;
                   the man the world knows as <span className="text-primary-400 font-semibold">Abarie.com</span> &mdash;
                   didn't discover comedy. Comedy found him.
                 </p>
@@ -231,7 +230,7 @@ export default function Home() {
               Upcoming <span className="text-primary-400">Events</span>
             </h2>
             <p className="mt-4 text-dark-400 text-lg max-w-2xl mx-auto">
-              Be part of the experience. Catch Abari live at these upcoming shows and events.
+              Be part of the experience. Catch Abarie live at these upcoming shows and events.
             </p>
           </div>
 
@@ -394,8 +393,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Book Now Section with Form */}
-      <BookNow />
+      {/* CTA */}
+      <section id="book" className="py-24 bg-gradient-to-r from-primary-600 to-primary-800 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent-500 rounded-full blur-3xl" />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+          <h2 className="font-display text-4xl sm:text-5xl font-bold mb-6">
+            Book Abarie For Your Event
+          </h2>
+          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+            Headline comedian, sharp MC, corporate events, weddings, concerts &mdash;
+            Abarie.com delivers every time.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="tel:+2348012345678"
+              className="bg-white text-primary-700 hover:bg-dark-100 px-8 py-4 rounded-full font-semibold text-lg transition-all flex items-center justify-center gap-2"
+            >
+              <Phone size={20} /> Call Now
+            </a>
+            <a
+              href="mailto:contact@abarie.com"
+              className="border-2 border-white text-white hover:bg-white hover:text-primary-700 px-8 py-4 rounded-full font-semibold text-lg transition-all flex items-center justify-center gap-2"
+            >
+              <Mail size={20} /> Send Email
+            </a>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

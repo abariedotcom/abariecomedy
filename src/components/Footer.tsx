@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail, Ticket } from 'lucide-react';
+import { Facebook, Instagram, TikTok, Youtube, MapPin, Phone, Mail, Ticket } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -16,9 +16,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { href: 'https://facebook.com/abariedotcom', Icon: Facebook },
-                { href: 'https://instagram.com/abariedotcom', Icon: Instagram },
-                { href: 'https://twitter.com/abariedotcom', Icon: Twitter },
+                { href: 'https://facebook.com/Abariedotcomcomedy/', Icon: Facebook },
+                { href: 'https://instagram.com/abarie.com_', Icon: Instagram },
+                { href: 'https://www.tiktok.com/@abarie.com', Icon: TikTok },
                 { href: 'https://www.youtube.com/@Abarie.comcomedy', Icon: Youtube },
               ].map(({ href, Icon }) => (
                 <a

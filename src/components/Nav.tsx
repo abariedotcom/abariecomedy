@@ -80,9 +80,16 @@ export default function Nav() {
             >
               Portfolio
             </Link>
-            <a href={sectionHref('#contact')} className="text-dark-200 hover:text-primary-400 transition-colors font-medium">
+            <Link
+              to="/contact"
+              className={`font-medium transition-colors ${
+                location.pathname === '/contact'
+                  ? 'text-primary-400'
+                  : 'text-dark-200 hover:text-primary-400'
+              }`}
+            >
               Contact
-            </a>
+            </Link>
             <a
               href={sectionHref('#book')}
               className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-primary-500/25"
@@ -126,9 +133,11 @@ export default function Nav() {
             }`}>
               Portfolio
             </Link>
-            <a href={sectionHref('#contact')} className="block py-2 text-dark-200 hover:text-primary-400 transition-colors font-medium">
+            <Link to="/contact" className={`block py-2 font-medium transition-colors ${
+              location.pathname === '/contact' ? 'text-primary-400' : 'text-dark-200 hover:text-primary-400'
+            }`}>
               Contact
-            </a>
+            </Link>
             <a
               href={sectionHref('#book')}
               className="block bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center px-6 py-3 rounded-full font-semibold"
@@ -140,4 +149,3 @@ export default function Nav() {
       )}
     </nav>
   );
-}

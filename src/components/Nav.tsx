@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Ticket } from 'lucide-react';
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,12 +73,12 @@ export default function Nav() {
             <a href={sectionHref('#contact')} className="text-dark-200 hover:text-primary-400 transition-colors font-medium">
               Contact
             </a>
-            <a
-              href={sectionHref('#book')}
-              className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-primary-500/25"
+            <Link
+              to="/tickets"
+              className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-accent-500/25 flex items-center gap-2"
             >
-              Book Now
-            </a>
+              <Ticket size={18} /> Get Tickets
+            </Link>
           </div>
 
           <button
@@ -117,12 +117,12 @@ export default function Nav() {
             <a href={sectionHref('#contact')} className="block py-2 text-dark-200 hover:text-primary-400 transition-colors font-medium">
               Contact
             </a>
-            <a
-              href={sectionHref('#book')}
-              className="block bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center px-6 py-3 rounded-full font-semibold"
+            <Link
+              to="/tickets"
+              className="block bg-gradient-to-r from-accent-500 to-accent-600 text-white text-center px-6 py-3 rounded-full font-semibold flex items-center justify-center gap-2"
             >
-              Book Now
-            </a>
+              <Ticket size={18} /> Get Tickets
+            </Link>
           </div>
         </div>
       )}

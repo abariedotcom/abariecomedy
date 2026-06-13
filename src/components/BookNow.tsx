@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CalendarDays, Users, DollarSign, MapPin, Phone, Mail, FileText, CheckCircle2, Award, Clock, MessageCircle, Star, ChevronDown, ArrowRight } from 'lucide-react';
+import { CalendarDays, Users, MapPin, Phone, Mail, FileText, CheckCircle2, Award, Clock, MessageCircle, Star, ChevronDown, ArrowRight } from 'lucide-react';
 import { getSupabase } from '../lib/supabase';
 
 interface FormData {
@@ -28,11 +28,11 @@ const eventTypes = [
 ];
 
 const budgetRanges = [
-  'Under $1,000',
-  '$1,000 - $2,500',
-  '$2,500 - $5,000',
-  '$5,000 - $10,000',
-  '$10,000+',
+  'Under ₦500,000',
+  '₦500,000 - ₦1,500,000',
+  '₦1,500,000 - ₦3,000,000',
+  '₦3,000,000 - ₦5,000,000',
+  '₦5,000,000+',
   'Flexible / Not Sure',
 ];
 
@@ -294,12 +294,12 @@ export default function BookNow() {
                 <div>
                   <label className="block text-dark-200 text-sm font-medium mb-2">Budget Range</label>
                   <div className="relative">
-                    <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-500" />
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-dark-500 font-semibold text-sm">₦</span>
                     <select
                       name="budgetRange"
                       value={formData.budgetRange}
                       onChange={handleInputChange}
-                      className="w-full pl-12 pr-4 py-3 bg-dark-800 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all appearance-none cursor-pointer"
+                      className="w-full pl-10 pr-4 py-3 bg-dark-800 border border-dark-600 rounded-lg text-white focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 transition-all appearance-none cursor-pointer"
                     >
                       <option value="" disabled>Select budget...</option>
                       {budgetRanges.map((range) => (

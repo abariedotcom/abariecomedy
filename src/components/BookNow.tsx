@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CalendarDays, Users, MapPin, Phone, Mail, FileText, CheckCircle2, Award, Clock, MessageCircle, Star, ChevronDown, ArrowRight } from 'lucide-react';
-import { getSupabase } from '../lib/supabase';
+import { supabase } from '../lib/supabase';
 
 interface FormData {
   name: string;
@@ -61,7 +61,7 @@ const testimonials = [
   {
     name: 'Adaeze Nwosu',
     event: 'Private Event',
-    text: "From hawkers on Lagos streets to headlining shows — Abarie's journey inspires as much as his comedy entertains.",
+    text: "From hawkers on Lagos streets to headlining shows \u2014 Abarie's journey inspires as much as his comedy entertains.",
     rating: 5,
   },
 ];
@@ -98,29 +98,23 @@ export default function BookNow() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const supabase = getSupabase();
-    if (supabase) {
-      try {
-        const { error } = await supabase.from('booking_inquiries').insert({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          event_type: formData.eventType,
-          event_date: formData.eventDate || null,
-          location: formData.location || null,
-          audience_size: formData.audienceSize || null,
-          budget_range: formData.budgetRange || null,
-          notes: formData.notes || null,
-        });
-        if (error) throw error;
-        setIsSuccess(true);
-      } catch {
-        setIsSuccess(true);
-      } finally {
-        setIsSubmitting(false);
-      }
-    } else {
+    try {
+      const { error } = await supabase.from('booking_inquiries').insert({
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        event_type: formData.eventType,
+        event_date: formData.eventDate || null,
+        location: formData.location || null,
+        audience_size: formData.audienceSize || null,
+        budget_range: formData.budgetRange || null,
+        notes: formData.notes || null,
+      });
+      if (error) throw error;
       setIsSuccess(true);
+    } catch {
+      setIsSuccess(true);
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -140,18 +134,16 @@ export default function BookNow() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section Header */}
         <div className="text-center mb-12">
           <p className="text-primary-400 font-medium tracking-wider uppercase mb-4">Book Now</p>
           <h2 className="font-display text-4xl sm:text-5xl font-bold mb-4">
             Book Abarie For Your <span className="text-primary-400">Event</span>
           </h2>
           <p className="text-dark-400 max-w-2xl mx-auto text-lg">
-            Headline comedian, sharp MC, corporate events, weddings, concerts — fill out the form below and get a response within 24 hours.
+            Headline comedian, sharp MC, corporate events, weddings, concerts \u2014 fill out the form below and get a response within 24 hours.
           </p>
         </div>
 
-        {/* Trust Badges */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {trustBadges.map((badge, index) => (
             <div
@@ -167,9 +159,7 @@ export default function BookNow() {
           ))}
         </div>
 
-        {/* Main Content */}
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
-          {/* Form Column */}
           <div className="lg:col-span-3">
             <div className="bg-dark-900/50 rounded-2xl p-6 sm:p-8 border border-dark-700">
               <h3 className="font-display text-2xl font-bold mb-6 flex items-center gap-3">
@@ -345,7 +335,6 @@ export default function BookNow() {
                 </button>
               </form>
 
-              {/* WhatsApp Button */}
               <div className="mt-6 pt-6 border-t border-dark-700">
                 <p className="text-dark-400 text-sm text-center mb-4">Prefer to chat directly?</p>
                 <a
@@ -361,9 +350,7 @@ export default function BookNow() {
             </div>
           </div>
 
-          {/* Right Column — Photo & Testimonials */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Photo */}
             <div className="relative rounded-2xl overflow-hidden h-64 lg:h-80">
               <img
                 src="https://images.pexels.com/photos/1761279/pexels-photo-1761279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -379,7 +366,6 @@ export default function BookNow() {
               </div>
             </div>
 
-            {/* Testimonials */}
             <div className="bg-dark-900/50 rounded-2xl p-6 border border-dark-700">
               <h3 className="font-display text-xl font-bold mb-4 flex items-center gap-2">
                 <Star className="w-5 h-5 text-accent-500" fill="currentColor" />
@@ -406,7 +392,6 @@ export default function BookNow() {
               </div>
             </div>
 
-            {/* Quick Contact */}
             <div className="bg-gradient-to-r from-primary-600/20 to-accent-500/10 rounded-xl p-5 border border-primary-500/30">
               <h4 className="text-white font-semibold mb-3">Quick Contact</h4>
               <div className="space-y-3">

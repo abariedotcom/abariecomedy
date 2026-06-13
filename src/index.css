@@ -18,3 +18,15 @@ body {
   background-color: rgba(20, 184, 166, 0.3);
   color: white;
 }
+
+/* Custom date input styling for dark theme */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Select dropdown styling */
+select option {
+  background-color: #1e293b;
+  color: white;
+}

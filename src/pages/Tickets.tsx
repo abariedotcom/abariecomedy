@@ -2,12 +2,12 @@ import { Calendar, MapPin, Clock, Ticket, Star, Phone, Mail, ArrowRight, Externa
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import CountdownTimer from '../components/CountdownTimer';
 
 const forthcomingEvent = {
   id: 'sfsg3',
   title: "So Far So Good 3.0",
-  date: "Coming Soon",
-  time: "TBA",
+  date: "2026-08-15T19:00:00",
   venue: "Eko Convention Centre",
   location: "Lagos, Nigeria",
   description: "The highly anticipated third edition of Abarie's flagship comedy show. Bigger, bolder, and guaranteed to crack your ribs. An unforgettable night of non-stop laughter awaits!",
@@ -115,8 +115,8 @@ export default function Tickets() {
                   className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4 lg:top-6 lg:left-6">
-                  <span className="px-3 py-1 bg-accent-500 text-dark-950 text-sm font-bold rounded-full animate-pulse">
-                    Coming Soon
+                  <span className="px-3 py-1 bg-accent-500 text-dark-950 text-sm font-bold rounded-full">
+                    Forthcoming
                   </span>
                 </div>
               </div>
@@ -130,14 +130,18 @@ export default function Tickets() {
                   {forthcomingEvent.description}
                 </p>
 
+                <div className="mb-6">
+                  <CountdownTimer targetDate={forthcomingEvent.date} label="Countdown to Showtime" />
+                </div>
+
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3 text-dark-300">
                     <Calendar className="w-5 h-5 text-primary-400" />
-                    <span>{forthcomingEvent.date}</span>
+                    <span>{new Date(forthcomingEvent.date).toLocaleDateString('en-NG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
                   </div>
                   <div className="flex items-center gap-3 text-dark-300">
                     <Clock className="w-5 h-5 text-primary-400" />
-                    <span>{forthcomingEvent.time}</span>
+                    <span>{new Date(forthcomingEvent.date).toLocaleTimeString('en-NG', { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
                   <div className="flex items-center gap-3 text-dark-300">
                     <MapPin className="w-5 h-5 text-primary-400" />

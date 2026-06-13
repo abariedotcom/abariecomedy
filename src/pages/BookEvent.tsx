@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Calendar, MapPin, Clock, Ticket, ArrowLeft, CreditCard, Check, Shield, Info } from 'lucide-react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import CountdownTimer from '../components/CountdownTimer';
 
 type TicketTier = 'regular' | 'vip' | 'table-of-5' | 'vip-table-of-5';
 
@@ -15,11 +16,10 @@ interface TicketOption {
   popular?: boolean;
 }
 
-const eventDetails: Record<string, { title: string; date: string; time: string; venue: string; location: string; image: string }> = {
+const eventDetails: Record<string, { title: string; date: string; venue: string; location: string; image: string }> = {
   sfsg3: {
     title: "So Far So Good 3.0",
-    date: "Coming Soon",
-    time: "TBA",
+    date: "2026-08-15T19:00:00",
     venue: "Eko Convention Centre",
     location: "Lagos, Nigeria",
     image: "/images/event-1.webp",
@@ -28,8 +28,7 @@ const eventDetails: Record<string, { title: string; date: string; time: string; 
 
 const defaultEvent = {
   title: "So Far So Good 3.0",
-  date: "Coming Soon",
-  time: "TBA",
+  date: "2026-08-15T19:00:00",
   venue: "Eko Convention Centre",
   location: "Lagos, Nigeria",
   image: "/images/event-1.webp",
@@ -124,7 +123,6 @@ export default function BookEvent() {
                 </div>
               </div>
 
-              {/* Order Summary */}
               <div className="bg-dark-900 rounded-xl p-5 mb-6 space-y-4">
                 <h3 className="font-semibold text-dark-300 text-sm uppercase tracking-wide">Order Summary</h3>
                 <div className="flex justify-between">
@@ -144,7 +142,6 @@ export default function BookEvent() {
                 </div>
               </div>
 
-              {/* Customer Info */}
               <div className="bg-dark-900 rounded-xl p-5 mb-6 space-y-3">
                 <h3 className="font-semibold text-dark-300 text-sm uppercase tracking-wide">Customer Details</h3>
                 <div className="grid grid-cols-2 gap-3 text-sm">
@@ -199,7 +196,6 @@ export default function BookEvent() {
             <ArrowLeft size={20} /> Back to Events
           </Link>
 
-          {/* Event Header */}
           <div className="bg-dark-800/50 rounded-2xl overflow-hidden border border-dark-700 mb-10">
             <div className="md:flex">
               <div className="md:w-2/5 aspect-video md:aspect-auto overflow-hidden">
@@ -216,14 +212,17 @@ export default function BookEvent() {
                 <h1 className="font-display text-2xl md:text-3xl font-bold mb-4">
                   {event.title}
                 </h1>
+                <div className="mb-5">
+                  <CountdownTimer targetDate={event.date} label="Countdown to Showtime" />
+                </div>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 text-dark-300">
                     <Calendar className="w-5 h-5 text-primary-400" />
-                    <span>{event.date}</span>
+                    <span>{new Date(event.date).toLocaleDateString('en-NG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
                   </div>
                   <div className="flex items-center gap-3 text-dark-300">
                     <Clock className="w-5 h-5 text-primary-400" />
-                    <span>{event.time}</span>
+                    <span>{new Date(event.date).toLocaleTimeString('en-NG', { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
                   <div className="flex items-center gap-3 text-dark-300">
                     <MapPin className="w-5 h-5 text-primary-400" />
@@ -234,7 +233,6 @@ export default function BookEvent() {
             </div>
           </div>
 
-          {/* Ticket Selection */}
           <div className="mb-10">
             <h2 className="font-display text-2xl font-bold mb-2">Choose Your Tickets</h2>
             <p className="text-dark-400 mb-6">Select the ticket type that suits you and proceed to payment.</p>
@@ -287,7 +285,6 @@ export default function BookEvent() {
             </div>
           </div>
 
-          {/* Quantity & Info Form */}
           <form onSubmit={handleProceedToPayment} className="space-y-6">
             <div className="bg-dark-800/50 rounded-2xl border border-dark-700 p-6 md:p-8">
               <h2 className="font-display text-xl font-bold mb-6">Your Details</h2>
@@ -354,7 +351,6 @@ export default function BookEvent() {
                 </div>
               </div>
 
-              {/* Total */}
               <div className="bg-dark-900 rounded-lg p-5 mb-6">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-dark-400">

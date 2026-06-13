@@ -4,7 +4,7 @@ import {
   MapPin, ChevronLeft, ChevronRight, Play,
   Calendar, Star, Users, Award, Mic,
   Drama, UserCheck, Sparkles, ExternalLink, ArrowRight,
-  Phone, Mail,
+  Phone, Mail, Ticket,
 } from 'lucide-react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
@@ -52,12 +52,12 @@ const upcomingEvents = [
 ];
 
 const portfolioItems = [
-  { title: 'So Far So Good 2.0 Highlights', category: 'Show', image: '/images/portfolio-1.webp', link: 'https://youtube.com/@abariedotcom' },
-  { title: 'Mudiaga Comedy Show', category: 'Performance', image: '/images/portfolio-2.webp', link: 'https://youtube.com/@abariedotcom' },
-  { title: 'So Far So Good 1.0', category: 'Show', image: '/images/portfolio-3.webp', link: 'https://youtube.com/@abariedotcom' },
-  { title: 'Live on Stage', category: 'Performance', image: '/images/portfolio-4.webp', link: 'https://youtube.com/@abariedotcom' },
-  { title: 'Behind The Scenes', category: 'Exclusive', image: '/images/portfolio-5.webp', link: 'https://youtube.com/@abariedotcom' },
-  { title: 'Abarie in Action', category: 'Live', image: '/images/portfolio-6.webp', link: 'https://youtube.com/@abariedotcom' },
+  { title: 'So Far So Good 2.0 Highlights', category: 'Show', image: '/images/portfolio-1.webp', link: 'https://www.youtube.com/watch?v=gqENYWBeIXA' },
+  { title: 'Mudiaga Comedy Show', category: 'Performance', image: '/images/portfolio-2.webp', link: 'https://www.youtube.com/watch?v=dPP57_KVzzs' },
+  { title: 'So Far So Good 1.0', category: 'Show', image: '/images/portfolio-3.webp', link: 'https://www.youtube.com/watch?v=7-2g37FDszo' },
+  { title: 'Live on Stage', category: 'Performance', image: '/images/portfolio-4.webp', link: 'https://www.youtube.com/watch?v=0-qtXlliHDM' },
+  { title: 'Behind The Scenes', category: 'Exclusive', image: '/images/portfolio-5.webp', link: 'https://www.youtube.com/watch?v=Vp16qH-Bw4U' },
+  { title: 'Abarie in Action', category: 'Live', image: '/images/portfolio-6.webp', link: 'https://www.youtube.com/watch?v=37zjiny_rcI' },
 ];
 
 const testimonials = [
@@ -128,10 +128,10 @@ export default function Home() {
                 Book Abarie <ArrowRight size={20} />
               </a>
               <Link
-                to="/about"
-                className="border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-dark-950 px-8 py-4 rounded-full font-semibold text-lg transition-all flex items-center justify-center gap-2"
+                to="/tickets"
+                className="bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-accent-500/25 flex items-center justify-center gap-2"
               >
-                Learn More
+                <Ticket size={20} /> Get Your Tickets
               </Link>
             </div>
           </div>
@@ -265,12 +265,12 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <a
-              href="#book"
+            <Link
+              to="/tickets"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-accent-500/25"
             >
-              Book for Your Event <ArrowRight size={20} />
-            </a>
+              <Ticket size={20} /> Get Your Tickets <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </section>
@@ -353,7 +353,7 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <a
-              href="https://youtube.com/@abariedotcom"
+              href="https://www.youtube.com/@Abarie.comcomedy"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-semibold text-lg group transition-colors"

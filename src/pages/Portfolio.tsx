@@ -15,7 +15,7 @@ const portfolioItems = [
     title: 'So Far So Good 2.0 Highlights',
     category: 'Show',
     image: '/images/portfolio-1.webp',
-    link: 'https://youtube.com/@abariedotcom',
+    link: 'https://www.youtube.com/watch?v=gqENYWBeIXA',
     description: 'Highlights from the second edition of Abarie\'s flagship show. A night of non-stop laughter that had Lagos talking for weeks.',
     tags: ['Headline Show', 'Lagos', '2024'],
   },
@@ -24,7 +24,7 @@ const portfolioItems = [
     title: 'Mudiaga Comedy Show',
     category: 'Performance',
     image: '/images/portfolio-2.webp',
-    link: 'https://youtube.com/@abariedotcom',
+    link: 'https://www.youtube.com/watch?v=dPP57_KVzzs',
     description: 'Abarie delivers a show-stopping performance at the Mudiaga Comedy Show, proving why he\'s one of Nigeria\'s finest.',
     tags: ['Guest Performance', 'Comedy Night'],
   },
@@ -33,7 +33,7 @@ const portfolioItems = [
     title: 'So Far So Good 1.0',
     category: 'Show',
     image: '/images/portfolio-3.webp',
-    link: 'https://youtube.com/@abariedotcom',
+    link: 'https://www.youtube.com/watch?v=7-2g37FDszo',
     description: 'The debut edition of the So Far So Good franchise. The show that started it all and set the standard for everything after.',
     tags: ['Headline Show', 'Debut', '2022'],
   },
@@ -42,7 +42,7 @@ const portfolioItems = [
     title: 'Live on Stage',
     category: 'Live',
     image: '/images/portfolio-4.webp',
-    link: 'https://youtube.com/@abariedotcom',
+    link: 'https://www.youtube.com/watch?v=0-qtXlliHDM',
     description: 'Raw, unfiltered Abarie doing what he does best — commanding a stage and owning every second of it.',
     tags: ['Live Show', 'Stand-Up'],
   },
@@ -51,7 +51,7 @@ const portfolioItems = [
     title: 'Behind The Scenes',
     category: 'Behind The Scenes',
     image: '/images/portfolio-5.webp',
-    link: 'https://youtube.com/@abariedotcom',
+    link: 'https://www.youtube.com/watch?v=Vp16qH-Bw4U',
     description: 'A glimpse behind the curtain. The preparation, the focus, and the moments before the mic goes live.',
     tags: ['BTS', 'Exclusive'],
   },
@@ -60,7 +60,7 @@ const portfolioItems = [
     title: 'Abarie in Action',
     category: 'Live',
     image: '/images/portfolio-6.webp',
-    link: 'https://youtube.com/@abariedotcom',
+    link: 'https://www.youtube.com/watch?v=37zjiny_rcI',
     description: 'Electrifying energy meets razor-sharp wit. Abarie in his element, delivering punchlines that leave no rib uncracked.',
     tags: ['Live Performance', 'Crowd Work'],
   },
@@ -350,7 +350,7 @@ export default function Portfolio() {
               Subscribe to the channel for full performances, behind-the-scenes content, and new releases.
             </p>
             <a
-              href="https://youtube.com/@abariedotcom"
+              href="https://www.youtube.com/@Abarie.comcomedy"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-lg hover:shadow-red-500/25"

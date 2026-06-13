@@ -1,3 +1,7 @@
 name = "abariecomedy"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "./dist"
+
+[vars]
+VITE_SUPABASE_URL = "https://gczsskotvforilxjovsi.supabase.co"
+VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjenNza290dmZvcmlseGpvdnNpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEzMjM3MDQsImV4cCI6MjA5Njg5OTcwNH0.jKU9AkwxGtpANg8_yqS3Uxq2w3Saj3pWTEAsq_8PL7w"

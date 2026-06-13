@@ -46,9 +46,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display text-xl font-bold mb-6">Get Tickets</h4>
+            <h4 className="font-display text-xl font-bold mb-6">Services</h4>
             <ul className="space-y-3">
-              <li><Link to="/tickets" className="text-dark-400 hover:text-primary-400 transition-colors flex items-center gap-2"><Ticket size={16} /> Buy Event Tickets</Link></li>
+              <li><Link to="/tickets" className="text-accent-400 hover:text-accent-300 transition-colors flex items-center gap-2"><Ticket size={16} /> Get Your Tickets</Link></li>
               <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Stand-Up Comedy</a></li>
               <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Event Compere</a></li>
               <li><a href="/#services" className="text-dark-400 hover:text-primary-400 transition-colors">Corporate Shows</a></li>

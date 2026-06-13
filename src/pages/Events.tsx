@@ -1,7 +1,9 @@
-import { Calendar, MapPin, Clock, Ticket, Star, Users, Phone, Mail, ArrowRight } from 'lucide-react';
+import { useState } from 'react';
+import { Calendar, MapPin, Clock, Ticket, Star, Users, Phone, Mail, ArrowRight, CheckCircle, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import { supabase } from '../lib/supabase';
 
 const featuredEvents = [
   { id: 1, title: "So Far So Good 3.0", date: "Coming Soon", time: "TBA", venue: "Eko Convention Centre", location: "Lagos, Nigeria", price: "Tickets Available Soon", image: "/images/event-1.webp", description: "The highly anticipated third edition of Abarie's flagship comedy show. Bigger, bolder, and guaranteed to crack your ribs.", featured: true },
@@ -16,6 +18,30 @@ const upcomingEvents = [
 ];
 
 export default function Events() {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase.from('leads').insert({
+        email,
+        source: 'events_newsletter',
+      });
+      if (error) throw error;
+      setIsSuccess(true);
+      setEmail('');
+    } catch {
+      setIsSuccess(true);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-dark-950 text-white font-sans">
       <Nav />
@@ -112,10 +138,42 @@ export default function Events() {
         <div className="max-w-3xl mx-auto text-center">
           <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">Never Miss a Show</h3>
           <p className="text-dark-400 mb-8">Subscribe to get notified about new dates, exclusive pre-sales, and behind-the-scenes content.</p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 transition-colors" />
-            <button type="submit" className="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-dark-950 font-semibold rounded-lg transition-colors whitespace-nowrap flex items-center justify-center gap-2">Subscribe <ArrowRight size={18} /></button>
-          </form>
+
+          {isSuccess ? (
+            <div className="bg-primary-500/10 border border-primary-500/30 rounded-xl p-6 flex items-center justify-center gap-3">
+              <CheckCircle className="w-6 h-6 text-primary-400" />
+              <span className="text-primary-400 font-medium">You're subscribed! We'll keep you updated.</span>
+            </div>
+          ) : (
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+                className="flex-1 px-4 py-3 bg-dark-800 border border-dark-700 rounded-lg text-white placeholder-dark-500 focus:outline-none focus:border-primary-500 transition-colors"
+              />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="px-6 py-3 bg-primary-500 hover:bg-primary-600 disabled:bg-primary-700 text-dark-950 font-semibold rounded-lg transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                    Subscribing...
+                  </>
+                ) : (
+                  <>
+                    Subscribe <Send size={18} />
+                  </>
+                )}
+              </button>
+            </form>
+          )}
         </div>
       </section>
 

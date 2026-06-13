@@ -163,9 +163,11 @@ export default function Portfolio() {
                   key={item.id}
                   className="group bg-dark-800/40 rounded-2xl overflow-hidden border border-dark-700 hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10"
                 >
-                  <div
-                    className="relative aspect-[4/3] overflow-hidden cursor-pointer"
-                    onClick={() => setSelectedItem(item)}
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative aspect-[4/3] overflow-hidden block"
                   >
                     <img
                       src={item.image}
@@ -183,7 +185,7 @@ export default function Portfolio() {
                         {item.category}
                       </span>
                     </div>
-                  </div>
+                  </a>
 
                   <div className="p-6">
                     <h3 className="font-display text-xl font-bold mb-2 group-hover:text-primary-400 transition-colors">

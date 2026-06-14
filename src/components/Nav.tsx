@@ -6,7 +6,6 @@ export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -17,8 +16,6 @@ export default function Nav() {
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
-
-  const sectionHref = (anchor: string) => (isHome ? anchor : `/${anchor}`);
 
   return (
     <nav
@@ -90,12 +87,12 @@ export default function Nav() {
             >
               Contact
             </Link>
-            <a
-              href={sectionHref('#book')}
+            <Link
+              to="/book"
               className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg hover:shadow-primary-500/25"
             >
               Book Now
-            </a>
+            </Link>
           </div>
 
           <button
@@ -138,12 +135,12 @@ export default function Nav() {
             }`}>
               Contact
             </Link>
-            <a
-              href={sectionHref('#book')}
+            <Link
+              to="/book"
               className="block bg-gradient-to-r from-primary-500 to-primary-600 text-white text-center px-6 py-3 rounded-full font-semibold"
             >
               Book Now
-            </a>
+            </Link>
           </div>
         </div>
       )}

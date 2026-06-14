@@ -6,10 +6,12 @@ import Portfolio from './pages/Portfolio';
 import Tickets from './pages/Tickets';
 import Contact from './pages/Contact';
 import Book from './pages/Book';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
